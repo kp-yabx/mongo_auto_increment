@@ -33,7 +33,7 @@ jobs:
         gem install rspec
         gem install mongoid
         gem install mocha
-        rspec ./spec/spec_helper.rb
+        rspec
         gem build *.gemspec
         gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
       env:

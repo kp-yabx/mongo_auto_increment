@@ -4,9 +4,8 @@ Idea from MongoDB document: [How to Make an Auto Incrementing Field](http://www.
 
 
 ## Status
-
+- ![Ruby Gem](https://github.com/guptalakshya92/mongo_auto_increment/workflows/Ruby%20Gem/badge.svg)
 - [![Gem Version](https://badge.fury.io/rb/mongo_auto_increment.svg)](https://rubygems.org/gems/mongo_auto_increment)
-- [![CI Status](https://api.travis-ci.org/huacnlee/mongoid_auto_increment_id.svg)](http://travis-ci.org/huacnlee/mongoid_auto_increment_id)
 
 ## Installation
 

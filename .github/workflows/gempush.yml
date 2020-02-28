@@ -27,7 +27,8 @@ jobs:
         chmod 0600 $HOME/.gem/credentials
         printf -- "---\n:github: Bearer ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
         gem install rspec
-        rspec
+        gem install mocha
+        rspec ./spec/spec_helper.rb
         gem build *.gemspec
         gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
       env:

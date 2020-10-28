@@ -14,9 +14,9 @@ describe "MongoAutoIncrement" do
     end
 
     it "does Id start from Time.now" do
-      expect(Post.create(:title => "Foo bar").id).to be > (Time.now.to_i + 1)
-      expect(Post.create(:title => "Foo bar").id).to be > (Time.now.to_i + 2)
-      expect(User.create(:email => "guptalakshya92@gmail.com").id).to eq (Time.now.to_i + 1)
+      expect(Post.create(:title => "Foo bar").id).to be > (DateTime.now.strftime("%Q").to_i + 1)
+      expect(Post.create(:title => "Foo bar").id).to be > (DateTime.now.strftime("%Q").to_i + 2)
+      expect(User.create(:email => "guptalakshya92@gmail.com").id).to eq (DateTime.now.strftime("%Q").to_i + 1)
     end
 
     it "does can return Integer Id when create/save" do
@@ -121,14 +121,14 @@ describe "MongoAutoIncrement" do
     
     it 'should work' do
       MongoAutoIncrement.seq_cache_size = 2
-      expect(SeqCacheTest.create(name: "Foo bar").id).to eq Time.now.to_i + 1
+      expect(SeqCacheTest.create(name: "Foo bar").id).to eq DateTime.now.strftime("%Q").to_i + 1
       expect(MongoAutoIncrement.cache_store.read(cache_key)).to eq [2]
-      expect(SeqCacheTest.create(name: "Foo bar").id).to eq Time.now.to_i + 2
+      expect(SeqCacheTest.create(name: "Foo bar").id).to eq DateTime.now.strftime("%Q").to_i + 2
       expect(MongoAutoIncrement.cache_store.read(cache_key)).to eq []
       MongoAutoIncrement.seq_cache_size = 5
-      expect(SeqCacheTest.create(name: "Foo bar").id).to eq Time.now.to_i + 3
+      expect(SeqCacheTest.create(name: "Foo bar").id).to eq DateTime.now.strftime("%Q").to_i + 3
       expect(MongoAutoIncrement.cache_store.read(cache_key)).to eq [4,5,6,7]
-      expect(SeqCacheTest.create(name: "Foo bar").id).to eq Time.now.to_i + 4
+      expect(SeqCacheTest.create(name: "Foo bar").id).to eq DateTime.now.strftime("%Q").to_i + 4
       expect(MongoAutoIncrement.cache_store.read(cache_key)).to eq [5,6,7]
       MongoAutoIncrement.seq_cache_size = 1
     end

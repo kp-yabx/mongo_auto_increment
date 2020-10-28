@@ -43,7 +43,7 @@ module MongoAutoIncrement
       end
 
       def generated_token(cache_key)
-        return Time.now.to_i + cache_key
+        return DateTime.now.strftime("%Q").to_i + cache_key
       end
 
       def shift_id(ids, cache_key)
